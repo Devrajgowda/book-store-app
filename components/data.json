@@ -1,0 +1,38 @@
+
+[
+  {
+    "bookName": "English Grammar",
+    "author": "Robert",
+    "price": 475
+  },
+  {
+    "bookName": "Kannada Grammar",
+    "author": "Manasa",
+    "price": 460
+  },
+  {
+    "bookName": "Social Text",
+    "author": "Latha",
+    "price": 219
+  },
+  {
+    "bookName": "Science Text",
+    "author": "James Franklin",
+    "price": 550
+  },
+  {
+    "bookName": "History 1947",
+    "author": "Balu",
+    "price": 1200
+  },
+  {
+    "bookName": "Maths Integration",
+    "author": "John Krude",
+    "price": 105
+  },
+  {
+    "bookName": "I am here to stay",
+    "author": "praman",
+    "price": 111
+  }
+]
