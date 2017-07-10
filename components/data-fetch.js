@@ -38,7 +38,7 @@ class NoResults extends Component{
     render() {
         return(
             <div>
-                {this.state.noResults}
+                <h3>{this.state.noResults}</h3>
             </div>
         );
     }
@@ -82,12 +82,11 @@ class InstantBox extends Component{
             sortBook: false,
             SortedBookList: [],
             showSort: true,
-            noResultsFound: 'No Results'
+            hideMessage: true
         }
         this.doSearch = this.doSearch.bind(this);
         this.renderBookResults = this.renderBookResults.bind(this);
         this.sortBookList = this.sortBookList.bind(this);
-
     }
 
     doSearch(queryText){
@@ -135,17 +134,22 @@ class InstantBox extends Component{
     }
 
     renderBookResults() {
-        if (this.state.query != '' && this.state.filteredBookData) {
+        if (this.state.query != '' && this.state.filteredBookData && this.state.filteredBookData.length != 0) {
             return (
                 <div>
                     <DisplayBookTable data={this.state.filteredBookData}/>
                 </div>
             );
         }
-       if(this.state.filteredBookData.length <= 0 && this.state.query != ''){
+       if(this.state.filteredBookData.length == 0 && this.state.query != ''){
+
+            this.setState ({
+                hideMessage: false
+            })
+
             return(
-                <div>
-                    <NoResults/>
+                <div className="no-results">
+                    <NoResults />
                 </div>
             );
         }
@@ -159,7 +163,9 @@ class InstantBox extends Component{
         }
         else {
             return (
+            <div>
                 <DisplayBookTable data={this.props.data}/>
+            </div>
             );
         }
     }
@@ -169,7 +175,10 @@ class InstantBox extends Component{
             <div className="book-lists">
                 <SearchBox query={this.state.query} doSearch={this.doSearch}/>
                 <br/>
-                { this.state.showSort == true ? <button className="btn btn-primary" onClick={this.sortBookList}>SORT</button>: <h4>The sorted book list is availabe..</h4> }
+                { this.state.showSort ?
+                    <button className="btn btn-primary" onClick={this.sortBookList}>SORT</button>: this.state.hideMessage ?
+                    <h4>The sorted book list is availabe..</h4>: null
+                }
                 <br />
                 {this.renderBookResults()}
             </div>

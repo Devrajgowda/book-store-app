@@ -1,4 +1,5 @@
-export default  defaultProps = {
+
+defaultProps = {
     website_header : 'Online Book Store',
     password_change: 'Change your password',
     reviews: 'Online Reviews',
